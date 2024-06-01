@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> basic calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calcu">
+            <input id="no1" type="number" placeholder="Enter numb 1">
+            <input id="no2" type="number" placeholder="Enter numb 2">
+            <select id="calcu">
+                <option value="select">select</option>
+                <option value="plus">+</option>
+                <option value="min">-</option>
+                <option value="mul">*</option>
+                <option value="divi">/</option>
+            </select>
+            <input type="text" id="result" value="res"/>
+        </div>
+    </div>
+    <script>
+        document.getElementById('calcu').addEventListener('change', function() {
+            var num1 = parseFloat(document.getElementById('no1').value);
+            var num2 = parseFloat(document.getElementById('no2').value);
+            var operator = document.getElementById('calcu').value;
+            var result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = 'Invalid input';
+            } else {
+                if (operator === 'plus') {
+                    result = num1 + num2;
+                } else if (operator === 'min') {
+                    result = num1 - num2;
+                } else if (operator === 'mul') {
+                    result = num1 * num2;
+                } else if (operator === 'divi') {
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = 'Cannot divide by zero';
+                    }
+                } else {
+                    result = 'Please select an operator';
+                }
+            }
+
+            document.getElementById('result').value = result;
+        });
+    </script>
+</body>
+</html>
